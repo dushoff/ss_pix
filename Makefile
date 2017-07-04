@@ -15,12 +15,14 @@ include sub.mk
 
 ## Crib
 
-%.R: ~/git/dushoff.github.io/%.R
-	$(copy)
+## %.R: ~/git/dushoff.github.io/%.R
+## 	$(copy)
 
 ##################################################################
 
 ## Content
+
+Sources += $(wildcard *.R)
 
 ## Cribbed from http://lalashan.mcmaster.ca/theobio/mmed/index.php/SIR_math_intro
 ## That's a useful resource, but this is probably not the picture we want.

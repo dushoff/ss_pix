@@ -2,6 +2,7 @@ commit.time
 .*.sw*
 
 *.Rout.pdf
+*.Rout-*.p*
 *.html
 
 *.log
