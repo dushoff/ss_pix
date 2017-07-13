@@ -1,4 +1,7 @@
 
+## Go through the range of early proportions
+## Calculate r, R, θ, φ for each
+## Make strength and speed plots for the extreme values
 hivAlt <- as.data.frame(t(sapply(epRange, function(ep){
 	g <- HIVgen(earlyProp=ep)
 	b0 <- b0fun(g, r)
@@ -23,6 +26,7 @@ hivAlt <- as.data.frame(t(sapply(epRange, function(ep){
 
 names(hivAlt) <- c("ep", "r", "R", "the", "phi")
 
+## Use loop results to make summary strength and speed plots
 with(hivAlt, {
 	plot(ep, the
 		, xlab = "Early Proportion"
@@ -43,4 +47,15 @@ with(hivAlt, {
 	lines(ep, r, type="l")
 })
 
+## Extra strength plot with Condom comparison
+with(hivAlt, {
+	plot(ep, the
+		, xlab = "Early Proportion"
+		, ylab = "Strength"
+		, ylim = c(0, max(c(the, R)))
+		, type = "l", col="blue"
+	)
+	lines(ep, R, type="l")
+	lines(ep, 0*R+flatL, col="red")
+})
 

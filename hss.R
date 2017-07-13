@@ -1,6 +1,6 @@
 
 par(cex=1.6)
-earlyProp=1/3
+earlyProp=1/4
 r = 1/18
 maxRate <- 1/6
 flatMult <- 1.12
