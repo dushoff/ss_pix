@@ -15,8 +15,9 @@ include sub.mk
 
 ## Crib
 
-%.R: ~/git/dushoff.github.io/%.R
-	$(copy)
+#  .PRECIOUS: %.R
+#  %.R: ~/git/dushoff.github.io/%.R
+#	  $(copy)
 
 ##################################################################
 
@@ -34,10 +35,10 @@ ess.Rout: EbolaFuns.Rout kernel.Rout ess.R
 flat.Rout: hss.Rout flat.R
 test.Rout: hss.Rout test.R
 
-
-
 %.scen.Rout: %.Rout HIVscen.R
 	$(run-R)
+
+test.scen.Rout:
 
 ######################################################################
 
