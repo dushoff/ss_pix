@@ -15,8 +15,8 @@ include sub.mk
 
 ## Crib
 
-## %.R: ~/git/dushoff.github.io/%.R
-## 	$(copy)
+%.R: ~/git/dushoff.github.io/%.R
+	$(copy)
 
 ##################################################################
 
