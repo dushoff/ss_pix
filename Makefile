@@ -32,8 +32,26 @@ endemic.Rout: endemic.R
 ## Functions for calculating strength-speed stuff that I don't currently understand
 kernel.Rout: kernel.R
 
+## HIV parameters 
 hss.Rout: HIVfuns.Rout kernel.Rout hss.R
-ess.Rout: EbolaFuns.Rout kernel.Rout ess.R
+
+## Old plots (generations and interventions using medium proportion)
+## Note, cex needs to be reset after mfrow in intPlot.
+HIVmed.Rout: hss.Rout par.R HIVmed.R
+	$(run-R)
+
+## New plots
+HIVkernel.Rout: hss.Rout par.R HIVkernel.R
+	$(run-R)
+
+## Ebola parameters (still has plots)
+ess.Rout: EbolaFuns.Rout kernel.Rout par.R ess.R
+
+######################################################################
+
+## Scenario plots
+%.scen.Rout: %.Rout par.R HIVscen.R
+	$(run-R)
 
 ## Parameters for test and treat
 test.Rout: hss.Rout test.R
@@ -42,14 +60,6 @@ test.scen.Rout:
 ## Parameters for condom
 flat.Rout: hss.Rout flat.R
 flat.scen.Rout: 
-
-## Make scenario plots
-%.scen.Rout: %.Rout HIVscen.R
-	$(run-R)
-
-
-## Parameters for condom
-condom.scen.Rout: condom.R
 
 ######################################################################
 

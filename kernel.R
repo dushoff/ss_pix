@@ -2,6 +2,7 @@
 # g, b are data frames with time and density
 # L is a data frame with time, strength and something about hazard
 
+## Calculate the initial backward distribution
 b0fun <- function(g, r){
 	step <- with(g, time[[2]]-time[[1]])
 	d0 <- with(g, density*exp(-r*time))
@@ -10,7 +11,7 @@ b0fun <- function(g, r){
 	)))
 }
 
-# How much does a given r _reduce_ R for distribution g?
+# How much does a given discount (r) _reduce_ R for distribution g?
 r2R <- function(g, r){
 	step <- with(g, time[[2]]-time[[1]])
 	return(with(g, 1/(step*sum(density*exp(-r*time)))))
@@ -49,13 +50,15 @@ theFun <- function(g, L){
 	}))
 }
 
-densPlot <- function(time, k, scen, color="black"){
+densPlot <- function(time, k, scen, color="black", ymax=NULL){
+	if(is.null(ymax)) ymax <- max(k)
 	with(c(scen), {
 		plot(time, k
 			, main = disease
 			, xlab = paste0("time (", unit, ")")
 			, ylab = paste0("Density (1/", unit, ")")
 			, type = "l", col=color
+			, ylim = c(0, ymax)
 		)
 	})
 }
@@ -101,6 +104,7 @@ intPlot <- function(time, density, strength, R){
 		, oma = c(0,0,0,0) + 0.1
 		, mar = c(0,4,1,1) + 0.1
 	)
+	par(cex=1.3)
 	plot(time, strength, type="l"
 		, axes=FALSE, xlab="", main="Intervention"
 	)

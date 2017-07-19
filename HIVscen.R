@@ -26,6 +26,9 @@ hivAlt <- as.data.frame(t(sapply(epRange, function(ep){
 
 names(hivAlt) <- c("ep", "r", "R", "the", "phi")
 
+## UT: Make no sense that this is necessary. And what about above stuff???
+
+par(cex=1.7)
 ## Use loop results to make summary strength and speed plots
 with(hivAlt, {
 	plot(ep, the
