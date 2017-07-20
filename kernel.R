@@ -50,11 +50,15 @@ theFun <- function(g, L){
 	}))
 }
 
-densPlot <- function(time, k, scen, color="black", ymax=NULL){
+densPlot <- function(time, k, scen, color="black", ymax=NULL, title=NULL){
 	if(is.null(ymax)) ymax <- max(k)
 	with(c(scen), {
+		if(is.null(title)) title <- disease
+		if(is.numeric(title)) title <-
+			paste("Reproductive number", sprintf("%5.2f", title))
+		# if(is.numeric(title)) title <- expression(R=title)
 		plot(time, k
-			, main = disease
+			, main = title
 			, xlab = paste0("time (", unit, ")")
 			, ylab = paste0("Density (1/", unit, ")")
 			, type = "l", col=color
@@ -87,6 +91,7 @@ dualPlot <- function(time, interv, intname, gen, stat, dtype){
 		, oma = c(0,0,0,0) + 0.1
 		, mar = c(0,4,1,1) + 0.1
 	)
+	par(cex=1.3)
 	plot(time, interv, type="l"
 		, axes=FALSE, xlab="", ylab=intname
 	)

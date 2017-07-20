@@ -55,11 +55,11 @@ ess.Rout: EbolaFuns.Rout kernel.Rout par.R ess.R
 
 ## Parameters for test and treat
 test.Rout: hss.Rout test.R
-test.scen.Rout:
+test.scen.Rout: HIVscen.R
 
 ## Parameters for condom
 flat.Rout: hss.Rout flat.R
-flat.scen.Rout: 
+flat.scen.Rout: HIVscen.R
 
 ######################################################################
 

@@ -26,9 +26,9 @@ hivAlt <- as.data.frame(t(sapply(epRange, function(ep){
 
 names(hivAlt) <- c("ep", "r", "R", "the", "phi")
 
-## UT: Make no sense that this is necessary. And what about above stuff???
-
+## UT: Having trouble getting cex to stick??? And what about above stuff???
 par(cex=1.7)
+
 ## Use loop results to make summary strength and speed plots
 with(hivAlt, {
 	plot(ep, the
@@ -38,6 +38,12 @@ with(hivAlt, {
 		, type = "l", col="blue"
 	)
 	lines(ep, R, type="l")
+	legend("topright"
+		, c("epidemic", "intervention")
+		, lty = 1
+		, bty ="n"
+		, col = c("black", "blue")
+	)
 })
 
 with(hivAlt, {
@@ -48,6 +54,22 @@ with(hivAlt, {
 		, type = "l", col="blue"
 	)
 	lines(ep, r, type="l")
+	legend("bottomright"
+		, c("epidemic", "intervention")
+		, lty = 1
+		, bty ="n"
+		, col = c("black", "blue")
+	)
+})
+
+## Preface plot (no intervention)
+with(hivAlt, {
+	plot(ep, R
+		, xlab = "Early Proportion"
+		, ylab = "Strength"
+		, ylim = c(0, max(c(the, R)))
+		, type = "l"
+	)
 })
 
 ## Extra strength plot with Condom comparison
