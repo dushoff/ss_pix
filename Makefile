@@ -1,4 +1,5 @@
 # ss_pix
+## Speed and strength pix
 ### Hooks for the editor to set the default target
 current: target
 target = Makefile
