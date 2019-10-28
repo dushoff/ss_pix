@@ -1,25 +1,18 @@
-# ss_pix
+# ss_pix: a screens project directory
+## makestuff/project.Makefile
 ## Speed and strength pix
-### Hooks for the editor to set the default target
+
 current: target
-target = Makefile
 -include target.mk
-target: $(target)
 
-##################################################################
+# include makestuff/perl.def
 
-Sources = Makefile .ignore README.md sub.mk LICENSE.md
-include sub.mk
-# include $(ms)/perl.def
-
-##################################################################
-
-## Content
-
-Sources += $(wildcard *.R)
+######################################################################
 
 ## Cribbed from http://lalashan.mcmaster.ca/theobio/mmed/index.php/SIR_math_intro
 ## That's a useful resource, but this is probably not the picture we want.
+
+Sources += $(wildcard *.R)
 endemic.Rout: endemic.R
 
 ## Functions for calculating strength-speed stuff that I don't currently understand
@@ -56,8 +49,25 @@ flat.scen.Rout: HIVscen.R
 
 ######################################################################
 
--include $(ms)/git.mk
--include $(ms)/visual.mk
+vim_session:
+	bash -cl "vmt"
 
--include $(ms)/wrapR.mk
-# -include $(ms)/oldlatex.mk
+######################################################################
+
+### Makestuff
+
+Sources += Makefile
+
+Ignore += makestuff
+msrepo = https://github.com/dushoff
+Makefile: makestuff/Makefile
+makestuff/Makefile:
+	git clone $(msrepo)/makestuff
+	ls $@
+
+-include makestuff/os.mk
+-include makestuff/wrapR.mk
+-include makestuff/git.mk
+-include makestuff/visual.mk
+-include makestuff/projdir.mk
+
