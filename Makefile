@@ -32,6 +32,7 @@ HIVkernel.Rout: hss.Rout par.R HIVkernel.R
 
 ## Ebola parameters (still has plots)
 ess.Rout: EbolaFuns.Rout kernel.Rout par.R ess.R
+	$(run-R)
 
 ######################################################################
 

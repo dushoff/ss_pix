@@ -11,7 +11,7 @@ EbolaGen <- function(bProp
 		+ bProp*dgamma(pretime, shape=bshape, scale=btime/bshape)
 	)
 
-	g0 <- c()
+	g0 <- numeric()
 	time <- seq(step, window, by=step)
 	for (tp in 1:length(time)){
 		dp <- seq(1, tp+1)
